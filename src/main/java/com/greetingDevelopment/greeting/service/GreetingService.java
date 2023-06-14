@@ -7,5 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface GreetingService {
     Greeting addGreeting(User user);
+    Greeting fetchDataById(Long id);
 
 }

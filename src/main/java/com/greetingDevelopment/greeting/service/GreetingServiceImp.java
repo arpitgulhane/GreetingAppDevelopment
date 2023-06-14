@@ -5,8 +5,6 @@ import com.greetingDevelopment.greeting.entity.User;
 import com.greetingDevelopment.greeting.reopositery.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -23,5 +21,10 @@ public class GreetingServiceImp implements GreetingService{
     public Greeting addGreeting(User user) {
         String message = String.format(template, (user.toString().isEmpty()) ? "Hello World" : user.getFirstName()+" "+user.getLastName());
         return greetingRepository.save(new Greeting(counter.incrementAndGet(),message));
+    }
+
+    @Override
+    public Greeting fetchDataById(Long id) {
+        return greetingRepository.findById(id).get();
     }
 }
