@@ -40,4 +40,10 @@ public class GreetingServiceImp implements GreetingService{
         greetingRunner.setMessage(String.format(template, (user.toString().isEmpty()) ? "Hello World" : user.getFirstName()+" "+user.getLastName()));
         return greetingRepository.save(greetingRunner);
     }
+
+    @Override
+    public Greeting deleteById(Long id) {
+        greetingRepository.deleteById(id);
+        return null;
+    }
 }

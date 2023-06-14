@@ -37,4 +37,11 @@ public class Greetingcontroller {
         return greetingService.updateGreeting(id, user);
     }
 
+    public String deleteById(@PathVariable("id")Long id ){
+        greetingService.deleteById(id);
+        System.out.println("Deleted ...");
+        return "Deleted ...";
+    }
+
+
 }
