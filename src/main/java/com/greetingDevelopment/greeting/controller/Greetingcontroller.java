@@ -6,6 +6,7 @@ import com.greetingDevelopment.greeting.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -21,8 +22,19 @@ public class Greetingcontroller {
         return greetingService.addGreeting(user);
     }
 
+    @GetMapping("/fetchById")
     public  Greeting fetchData(@PathVariable Long id){
         return greetingService.fetchDataById(id);
+    }
+
+    @GetMapping("/fetchAllData")
+    public List<Greeting> getAllList(){
+        return greetingService.getAllList();
+    }
+
+    @PutMapping("/update/{id}")
+    public Greeting updateGreeting(@PathVariable("id") Long id, @RequestBody User user) {
+        return greetingService.updateGreeting(id, user);
     }
 
 }
